@@ -1,19 +1,13 @@
-## SKTagView
+## MBTagView
 
-[![CI Status](http://img.shields.io/travis/zsk425/SKTagView.svg?style=flat-square)](https://travis-ci.org/zsk425/SKTagView)
-[![Version](https://img.shields.io/cocoapods/v/SKTagView.svg?style=flat-square)](http://cocoadocs.org/docsets/SKTagView)
-[![License](https://img.shields.io/cocoapods/l/SKTagView.svg?style=flat-square)](http://cocoadocs.org/docsets/SKTagView)
-[![Platform](https://img.shields.io/cocoapods/p/SKTagView.svg?style=flat-square)](http://cocoadocs.org/docsets/SKTagView)
 
-This library is derived from [SFTagView](https://github.com/shiweifu/SFTagView),which tries to build a view displaying tags without using UICollectionView and supports auto layout.It's a good beginning,but not good enough.
-
-So I tried to make it more auto layout.After having tried a lot,I inspired by UILabel.Now it just works like UILabel and supports single line and multi-line.
+This library is derived from [SKTagView](https://github.com/zsk425/SKTagView).
 
 ### Installation with CocoaPods
 
 ```ruby
 platform :ios, '7.0'
-pod "SKTagView"
+pod "MBTagView"
 ```
 
 ### Usage
@@ -25,40 +19,51 @@ Check out the project. It contains the usages of normal way and in UITableViewCe
 ```objc
 - (void)setupTagView
 {
-  self.tagView = ({
-    SKTagView *view = [SKTagView new];
-    view.backgroundColor = UIColor.cyanColor;
-    view.padding    = UIEdgeInsetsMake(10, 25, 10, 25);
-    view.insets    = 5;
-    view.lineSpace = 2;
-	__weak SKTagView *weakView = view;
-	//Handle tag's click event
-	view.didClickTagAtIndex = ^(NSUInteger index){
-		//Remove tag
-		[weakView removeTagAtIndex:index];
-	};
-    view;
-  });
-  [self.view addSubview:self.tagView];
-  [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
-    UIView *superView = self.view;
-    make.center.equalTo(superView);
-    make.leading.equalTo(superView.mas_leading);
-    make.trailing.equalTo(superView.mas_trailing);
-  }];
+    self.tagView = ({
+        MBTagView *view = [MBTagView new];
+        view.backgroundColor = [UIColor colorWithHexString:@"#EAEAEA"];
+        view.padding    = UIEdgeInsetsMake(10, 10, 10, 35);
+        view.insets    = 10;
+        view.lineSpace = 10;
+        __weak MBTagView *weakView = view;
+        weakView.didClickTagAtIndex = ^(NSUInteger index)  {
 
-  //Add Tags
-  [@[@"Python", @"Javascript", @"HTML", @"Go", @"Objective-C",@"C", @"PHP"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-  {
-    SKTag *tag = [SKTag tagWithText:obj];
-    tag.textColor = UIColor.whiteColor;
-    tag.bgColor = UIColor.orangeColor;
-    tag.cornerRadius = 3;
-	tag.fontSize = 15;
-	tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
+        };
+        weakView.animateBlockForEachView = ^(UIView *v) {
+            CGAffineTransform transform = v.transform;
+            [UIView animateWithDuration:0.1f delay:0.0f options: UIViewAnimationOptionAutoreverse| UIViewAnimationOptionCurveLinear animations:^{
+                v.transform = CGAffineTransformScale(transform, 0.95, 0.95);
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    v.transform = CGAffineTransformScale(transform, 1, 1);
+                }
+            }];
+        };
+        view;
+    });
+    [self.view addSubview:self.tagView];
 
-    [self.tagView addTag:tag];
-  }];
+    [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
+        UIView *superView = self.view;
+        make.top.equalTo(superView).offset(40);
+        make.leading.equalTo(superView.mas_leading);
+        make.trailing.equalTo(superView.mas_trailing);
+    }];
+
+    [@[@"Sent", @"Attachments", @"Today", @"Conversations", @"Archieve",@"Trash", @"Others", @"Newsletters"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+     {
+         MBTag *tag = [MBTag tagWithText:obj];
+         tag.textColor = [UIColor colorWithHexString:@"#9B9B9B"];
+         tag.bgColor = UIColor.whiteColor;
+         tag.selectedbackgroundColor = [UIColor colorWithHexString:@"#83D5F6"];
+         tag.selectable = YES;
+         tag.cornerRadius = 13;
+         tag.animatable = YES;
+         tag.fontSize = 15;
+         tag.padding = UIEdgeInsetsMake(5, 12, 5, 12);
+
+         [self.tagView addTag:tag];
+     }];
 }
 ```
 
@@ -70,12 +75,8 @@ When uses with UITableViewCell in multi-line mode,it MUST be set preferredMaxLay
 
 ### Screenshots
 
-#### Normal
-![](https://raw.github.com/zsk425/SKTagView/master/Screenshots/example.png)
-
-#### With UITableViewCell
-![](https://raw.github.com/zsk425/SKTagView/master/Screenshots/example2.png)
+![](https://raw.github.com/mailburn/MBTagView/master/Screenshots/example.png)
 
 ### License
 
-SKTagView is available under the MIT license. See the LICENSE file for more info.
+MBTagView is available under the MIT license. See the LICENSE file for more info.

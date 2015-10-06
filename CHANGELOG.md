@@ -1,3 +1,6 @@
+###v1.0
+Added support for selected state color, animate of each tag when selecting.
+
 ###v0.7
 Added support for attributed strings
 

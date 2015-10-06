@@ -1,6 +1,6 @@
 //
-//  SKTagViewTests.m
-//  SKTagViewTests
+//  MBTagViewTests.m
+//  MBTagViewTests
 //
 //  Created by Akram Hussein on 18/04/2015.
 //  Copyright (c) 2015 shiweifu. All rights reserved.
@@ -8,28 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "MBTagView.h"
+#import "MBTag.h"
 
-#import "SKTagView.h"
-#import "SKTag.h"
+@interface MBTagViewTests : XCTestCase
 
-@interface SKTagViewTests : XCTestCase
-
-@property (strong, nonatomic) SKTagView *tagView;
+@property (strong, nonatomic) MBTagView *tagView;
 
 @end
 
-@interface SKTagView ()
+@interface MBTagView ()
 
 @property (nonatomic, strong) NSMutableArray *tags;
 
 @end
 
-@implementation SKTagViewTests
+@implementation MBTagViewTests
 
 - (void)setUp {
     [super setUp];
 
-    self.tagView = [[SKTagView alloc] initWithFrame: CGRectZero];
+    self.tagView = [[MBTagView alloc] initWithFrame: CGRectZero];
 }
 
 - (void)tearDown {
@@ -60,7 +59,7 @@
 }
 
 - (void)testTagViewPreferredMaxLayoutWidth {
-    SKTagView *tagView = [[SKTagView alloc] initWithFrame: CGRectZero];
+    MBTagView *tagView = [[MBTagView alloc] initWithFrame: CGRectZero];
     
     tagView.preferredMaxLayoutWidth = 10;
     XCTAssertEqual(tagView.preferredMaxLayoutWidth, 10);
@@ -78,7 +77,7 @@
 // MARK: - Test Public Methods
 
 - (void)testTagViewAddTag {
-    SKTag *tag = [SKTag tagWithText:@"Test Tag"];
+    MBTag *tag = [MBTag tagWithText:@"Test Tag"];
     
     [self.tagView addTag:tag];
     
@@ -86,7 +85,7 @@
 }
 
 - (void)testTagViewRemoveTag {
-    SKTag *tag = [SKTag tagWithText:@"Test Tag"];
+    MBTag *tag = [MBTag tagWithText:@"Test Tag"];
     
     [self.tagView addTag:tag];
     [self.tagView removeTag: tag];
@@ -95,7 +94,7 @@
 }
 
 - (void)testTagViewRemoveSameTagTwice {
-    SKTag *tag = [SKTag tagWithText:@"Test Tag"];
+    MBTag *tag = [MBTag tagWithText:@"Test Tag"];
     
     [self.tagView addTag:tag];
     [self.tagView removeTag: tag];
@@ -105,7 +104,7 @@
 }
 
 - (void) testTagViewInsertTagAtIndex {
-    SKTag *tag = [SKTag tagWithText:@"Test Tag"];
+    MBTag *tag = [MBTag tagWithText:@"Test Tag"];
     
     [self.tagView insertTag:tag atIndex:0];
     
@@ -114,8 +113,8 @@
 }
 
 - (void) testTagViewInsertMultipleTagsAtIndex {
-    SKTag *tag1 = [SKTag tagWithText:@"Test Tag 1"];
-    SKTag *tag2 = [SKTag tagWithText:@"Test Tag 2"];
+    MBTag *tag1 = [MBTag tagWithText:@"Test Tag 1"];
+    MBTag *tag2 = [MBTag tagWithText:@"Test Tag 2"];
     
     [self.tagView insertTag:tag1 atIndex:0];
     [self.tagView insertTag:tag2 atIndex:1];
@@ -126,7 +125,7 @@
 }
 
 - (void) testTagViewInsertAndRemoveTagAtIndex {
-    SKTag *tag = [SKTag tagWithText:@"Test Tag"];
+    MBTag *tag = [MBTag tagWithText:@"Test Tag"];
     
     [self.tagView insertTag:tag atIndex:0];
     [self.tagView removeTagAtIndex:0];
@@ -135,9 +134,9 @@
 }
 
 - (void) testTagViewRemoveAllTags {
-    SKTag *tag1 = [SKTag tagWithText:@"Test Tag 1"];
-    SKTag *tag2 = [SKTag tagWithText:@"Test Tag 2"];
-    SKTag *tag3 = [SKTag tagWithText:@"Test Tag 3"];
+    MBTag *tag1 = [MBTag tagWithText:@"Test Tag 1"];
+    MBTag *tag2 = [MBTag tagWithText:@"Test Tag 2"];
+    MBTag *tag3 = [MBTag tagWithText:@"Test Tag 3"];
     
     [self.tagView insertTag:tag1 atIndex:0];
     [self.tagView insertTag:tag2 atIndex:1];

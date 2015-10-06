@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class SKTagView;
+@class MBTagView;
 @interface TagsTableCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet SKTagView *tagView;
+@property (weak, nonatomic) IBOutlet MBTagView *tagView;
 @end

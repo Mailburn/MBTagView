@@ -1,23 +1,23 @@
 //
-//  SKTagView.m
+//  MBTagView.m
 //
 //  Created by Shaokang Zhao on 15/1/12.
 //  Copyright (c) 2015 Shaokang Zhao. All rights reserved.
 //
 
-#import "SKTagView.h"
-#import "SKTagButton.h"
+#import "MBTagView.h"
+#import "MBTagButton.h"
 #import <Masonry/Masonry.h>
 
 #define SAVE_C(c) [self.tagsContraints addObject:c]
 
-@interface SKTagView ()
+@interface MBTagView ()
 @property (nonatomic, strong) NSMutableArray *tagsConstraints;
 @property (nonatomic, strong) NSMutableArray *tags;
 @property (nonatomic) BOOL didSetup;
 @end
 
-@implementation SKTagView
+@implementation MBTagView
 
 #pragma mark - Life circle
 - (void)updateConstraints
@@ -259,8 +259,18 @@
     }
 }
 
-- (void)onTag:(UIButton *)btn
+- (void)onTag:(MBTagButton *)btn
 {
+    if (btn.animatable) {
+        if (self.animateBlockForEachView) {
+            self.animateBlockForEachView(btn);
+        }
+    }
+    
+    if (btn.selectable) {
+        btn.selected = !btn.selected;
+    }
+    
     if (self.didClickTagAtIndex)
     {
         self.didClickTagAtIndex([self.subviews indexOfObject:btn]);
@@ -268,9 +278,9 @@
 }
 
 #pragma mark - Public methods
-- (void)addTag:(SKTag *)tag
+- (void)addTag:(MBTag *)tag
 {
-    SKTagButton *btn = [SKTagButton buttonWithTag:tag];
+    MBTagButton *btn = [MBTagButton buttonWithTag:tag];
     [btn addTarget:self action:@selector(onTag:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
     [self.tags addObject:tag];
@@ -279,7 +289,7 @@
     [self invalidateIntrinsicContentSize];
 }
 
-- (void)insertTag:(SKTag *)tag atIndex:(NSUInteger)index
+- (void)insertTag:(MBTag *)tag atIndex:(NSUInteger)index
 {
     if (index + 1 > self.tags.count)
     {
@@ -287,7 +297,7 @@
     }
     else
     {
-        SKTagButton *btn = [SKTagButton buttonWithTag:tag];
+        MBTagButton *btn = [MBTagButton buttonWithTag:tag];
         [btn addTarget:self action:@selector(onTag:) forControlEvents:UIControlEventTouchUpInside];
         [self insertSubview:btn atIndex:index];
         [self.tags insertObject:tag atIndex:index];
@@ -297,7 +307,7 @@
     }
 }
 
-- (void)removeTag:(SKTag *)tag
+- (void)removeTag:(MBTag *)tag
 {
     NSUInteger index = [self.tags indexOfObject:tag];
     if (NSNotFound == index)

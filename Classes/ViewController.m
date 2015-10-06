@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "SKTagView.h"
+#import "MBTagView.h"
 #import <Masonry/Masonry.h>
 #import <HexColors/HexColor.h>
 
 @interface ViewController ()
-@property (strong, nonatomic) SKTagView *tagView;
+@property (strong, nonatomic) MBTagView *tagView;
 @property (nonatomic, strong) NSArray *colorPool;
 
 @property (weak, nonatomic) IBOutlet UITextField *index;
@@ -24,7 +24,7 @@
 {
     [super viewDidLoad];
     
-    self.colorPool = @[@"#7ecef4", @"#84ccc9", @"#88abda",@"#7dc1dd",@"#b6b8de"];
+    self.colorPool = @[@"#7ecef4", @"#84ccc9", @"#88abda",@"#7dc1dd",@"#b6b8de", ];
     
     [self setupTagView];
 }
@@ -32,62 +32,81 @@
 - (void)setupTagView
 {
     self.tagView = ({
-        SKTagView *view = [SKTagView new];
-        view.backgroundColor = UIColor.whiteColor;
-        view.padding    = UIEdgeInsetsMake(12, 12, 12, 12);
-        view.insets    = 15;
+        MBTagView *view = [MBTagView new];
+        view.backgroundColor = [UIColor colorWithHexString:@"#EAEAEA"];
+        view.padding    = UIEdgeInsetsMake(10, 10, 10, 10);
+        view.insets    = 10;
         view.lineSpace = 10;
-        __weak SKTagView *weakView = view;
-        view.didClickTagAtIndex = ^(NSUInteger index){
-            //Remove tag
-            [weakView removeTagAtIndex:index];
+        __weak MBTagView *weakView = view;
+        weakView.didClickTagAtIndex = ^(NSUInteger index)  {
+            
+        };
+        weakView.animateBlockForEachView = ^(UIView *v) {
+            CGAffineTransform transform = v.transform;
+            [UIView animateWithDuration:0.1f delay:0.0f options: UIViewAnimationOptionAutoreverse| UIViewAnimationOptionCurveLinear animations:^{
+                v.transform = CGAffineTransformScale(transform, 0.95, 0.95);
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    v.transform = CGAffineTransformScale(transform, 1, 1);
+                }
+            }];
         };
         view;
     });
     [self.view addSubview:self.tagView];
+    
     [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
         UIView *superView = self.view;
-        make.centerY.equalTo(superView.mas_centerY).with.offset(0);
-        make.leading.equalTo(superView.mas_leading).with.offset(0);
+        make.top.equalTo(superView).offset(40);
+        make.leading.equalTo(superView.mas_leading);
         make.trailing.equalTo(superView.mas_trailing);
     }];
     
-    //Add Tags
-    [@[@"Python", @"Javascript", @"Python", @"HTML", @"Go", @"Objective-C",@"C", @"PHP"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    [@[@"Sent", @"Attachments", @"Today", @"Conversations", @"Archieve",@"Trash", @"Others", @"Newsletters"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
      {
-         SKTag *tag = [SKTag tagWithText:obj];
+         MBTag *tag = [MBTag tagWithText:obj];
          tag.textColor = [UIColor whiteColor];
+         tag.bgColor = [UIColor colorWithHexString:self.colorPool[arc4random() % self.colorPool.count]];;
+         tag.selectedbackgroundColor = [UIColor colorWithHexString:@"#A0E07C"];
+         tag.selectable = YES;
+         tag.cornerRadius = 13;
+         tag.animatable = YES;
          tag.fontSize = 15;
-         //tag.font = [UIFont fontWithName:@"Courier" size:15];
-         tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
-         tag.bgColor = [UIColor colorWithHexString:self.colorPool[idx % self.colorPool.count]];
-         tag.cornerRadius = 5;
+         tag.padding = UIEdgeInsetsMake(5, 12, 5, 12);
          
          [self.tagView addTag:tag];
      }];
 }
 
+
+
 #pragma mark - User interactions
 - (IBAction)onAdd:(id)sender
 {
-    SKTag *tag = [SKTag tagWithText:@"New Lang"];
+    MBTag *tag = [MBTag tagWithText:@"New Filter tag"];
     tag.textColor = [UIColor whiteColor];
+    tag.bgColor = [UIColor colorWithHexString:self.colorPool[arc4random() % self.colorPool.count]];;
+    tag.selectedbackgroundColor = [UIColor colorWithHexString:@"#A0E07C"];
+    tag.selectable = YES;
+    tag.cornerRadius = 13;
+    tag.animatable = YES;
     tag.fontSize = 15;
-    tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
-    tag.bgColor = [UIColor colorWithHexString:self.colorPool[arc4random() % self.colorPool.count]];
-    tag.cornerRadius = 5;
+    tag.padding = UIEdgeInsetsMake(5, 12, 5, 12);
     
     [self.tagView addTag:tag];
 }
 
 - (IBAction)onInsert:(id)sender
 {
-    SKTag *tag = [SKTag tagWithText:[NSString stringWithFormat:@"Insert(%ld)",(long)self.index.text.integerValue]];
+    MBTag *tag = [MBTag tagWithText:[NSString stringWithFormat:@"Insert Tag(%ld)",(long)self.index.text.integerValue]];
     tag.textColor = [UIColor whiteColor];
+    tag.bgColor = [UIColor colorWithHexString:self.colorPool[arc4random() % self.colorPool.count]];;
+    tag.selectedbackgroundColor = [UIColor colorWithHexString:@"#A0E07C"];
+    tag.selectable = YES;
+    tag.cornerRadius = 13;
+    tag.animatable = YES;
     tag.fontSize = 15;
-    tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
-    tag.bgColor = [UIColor colorWithHexString:self.colorPool[arc4random() % self.colorPool.count]];
-    tag.cornerRadius = 5;
+    tag.padding = UIEdgeInsetsMake(5, 12, 5, 12);
     
     [self.tagView insertTag:tag atIndex:self.index.text.integerValue];
 }

@@ -8,7 +8,7 @@
 
 #import "TagsTableViewController.h"
 #import "TagsTableCell.h"
-#import "SKTagView.h"
+#import "MBTagView.h"
 #import <HexColors/HexColor.h>
 
 #define SCREEN_WIDTH    ([UIScreen mainScreen].bounds.size.width)
@@ -17,7 +17,7 @@
 static NSString *const kTagsTableCellReuseIdentifier = @"TagsTableCell";
 
 
-@interface UIImage (SKTagView)
+@interface UIImage (MBTagView)
 + (UIImage *)imageWithColor:(UIColor *)color;
 @end
 
@@ -54,7 +54,7 @@ static NSString *const kTagsTableCellReuseIdentifier = @"TagsTableCell";
     //Add Tags
     [@[@"Python", @"Javascript", @"HTML", @"Go", @"Objective-C",@"C", @"PHP"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
      {
-         SKTag *tag = [SKTag tagWithText:obj];
+         MBTag *tag = [MBTag tagWithText:obj];
          tag.textColor = [UIColor whiteColor];
          tag.fontSize = 15;
          tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
@@ -99,7 +99,7 @@ static NSString *const kTagsTableCellReuseIdentifier = @"TagsTableCell";
 
 @end
 
-@implementation UIImage (SKTagView)
+@implementation UIImage (MBTagView)
 
 + (UIImage *)imageWithColor:(UIColor *)color
 {

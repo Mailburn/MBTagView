@@ -4,11 +4,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 
-target "SKTagView" do
+target "MBTagView" do
 pod 'Masonry'
 pod 'HexColors'
 end
 
-target "SKTagViewTests" do
+target "MBTagViewTests" do
 end
 

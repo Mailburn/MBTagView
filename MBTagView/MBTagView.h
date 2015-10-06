@@ -1,14 +1,14 @@
 //
-//  SKTagView.h
+//  MBTagView.h
 //
 //  Created by Shaokang Zhao on 15/1/12.
 //  Copyright (c) 2015 Shaokang Zhao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "SKTag.h"
+#import "MBTag.h"
 
-@interface SKTagView : UIView
+@interface MBTagView : UIView
 
 @property (nonatomic) UIEdgeInsets padding;
 @property (nonatomic) int lineSpace;
@@ -16,13 +16,14 @@
 @property (nonatomic) CGFloat preferredMaxLayoutWidth;
 @property (nonatomic) BOOL singleLine;
 
-- (void)addTag:(SKTag *)tag;
-- (void)insertTag:(SKTag *)tag atIndex:(NSUInteger)index;
-- (void)removeTag:(SKTag *)tag;
+- (void)addTag:(MBTag *)tag;
+- (void)insertTag:(MBTag *)tag atIndex:(NSUInteger)index;
+- (void)removeTag:(MBTag *)tag;
 - (void)removeTagAtIndex:(NSUInteger)index;
 - (void)removeAllTags;
 
 @property (nonatomic, copy) void (^didClickTagAtIndex)(NSUInteger index);
+@property (nonatomic, copy) void (^animateBlockForEachView)(UIView *btn);
 
 @end
 

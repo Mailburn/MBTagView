@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C75D32F9C55A56DED782A8C5878F916B5F92392C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C75D32F9C55A56DED782A8C5878F916B5F92392C" : 0,
+    "54398781800287792721952A18E30EE3469FAC2D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "139579AF-4C74-4719-8492-9477C3DB0DA8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C75D32F9C55A56DED782A8C5878F916B5F92392C" : "MBTagView\/",
+    "54398781800287792721952A18E30EE3469FAC2D" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MBTagView",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MBTagView.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:leoru\/SwiftLoader.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "54398781800287792721952A18E30EE3469FAC2D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Mailburn\/MBTagView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C75D32F9C55A56DED782A8C5878F916B5F92392C"
+    }
+  ]
+}
