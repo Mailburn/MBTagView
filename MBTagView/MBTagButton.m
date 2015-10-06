@@ -48,7 +48,7 @@
     btn.layer.cornerRadius = tag.cornerRadius;
     btn.layer.masksToBounds = YES;
     btn.selectable = tag.selectable;
-    btn.animatable = tag.animatable;
+    btn.animable = tag.animable;
     
     return btn;
 }

@@ -58,7 +58,7 @@ Check out the project. It contains the usages of normal way and in UITableViewCe
          tag.selectedbackgroundColor = [UIColor colorWithHexString:@"#83D5F6"];
          tag.selectable = YES;
          tag.cornerRadius = 13;
-         tag.animatable = YES;
+         tag.animable = YES;
          tag.fontSize = 15;
          tag.padding = UIEdgeInsetsMake(5, 12, 5, 12);
 

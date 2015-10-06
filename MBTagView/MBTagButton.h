@@ -11,7 +11,7 @@
 @interface MBTagButton : UIButton
 
 @property (nonatomic) BOOL selectable;
-@property (nonatomic) BOOL animatable;
+@property (nonatomic) BOOL animable;
 
 + (instancetype)buttonWithTag:(MBTag *)tag;
 

@@ -261,7 +261,7 @@
 
 - (void)onTag:(MBTagButton *)btn
 {
-    if (btn.animatable) {
+    if (btn.animable) {
         if (self.animateBlockForEachView) {
             self.animateBlockForEachView(btn);
         }

@@ -31,7 +31,7 @@
 //default: NO
 @property (nonatomic) BOOL selectable;
 
-@property (nonatomic) BOOL animatable;
+@property (nonatomic) BOOL animable;
 
 - (instancetype)initWithText:(NSString *)text;
 + (instancetype)tagWithText:(NSString *)text;
