@@ -19,7 +19,7 @@
         _bgColor = [UIColor whiteColor];
         _enable = YES;
         _selectable = NO;
-        animable = NO;
+        _animable = NO;
     }
     
     return self;
