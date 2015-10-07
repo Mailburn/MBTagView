@@ -348,4 +348,14 @@
     [self invalidateIntrinsicContentSize];
 }
 
+- (void)selectTagAtIndex:(NSInteger)index
+{
+    if (index > self.tags.count) {
+        return;
+    }
+    
+    MBTagButton *tagButton = self.subviews[index];
+    [self onTag:tagButton];
+}
+
 @end
