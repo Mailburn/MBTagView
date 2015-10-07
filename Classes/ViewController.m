@@ -70,7 +70,7 @@
          tag.selectedbackgroundColor = [UIColor colorWithHexString:@"#A0E07C"];
          tag.selectable = YES;
          tag.cornerRadius = 13;
-         tag.animatable = YES;
+         tag.animable = YES;
          tag.fontSize = 15;
          tag.padding = UIEdgeInsetsMake(5, 12, 5, 12);
          
@@ -89,7 +89,7 @@
     tag.selectedbackgroundColor = [UIColor colorWithHexString:@"#A0E07C"];
     tag.selectable = YES;
     tag.cornerRadius = 13;
-    tag.animatable = YES;
+    tag.animable = YES;
     tag.fontSize = 15;
     tag.padding = UIEdgeInsetsMake(5, 12, 5, 12);
     
@@ -104,7 +104,7 @@
     tag.selectedbackgroundColor = [UIColor colorWithHexString:@"#A0E07C"];
     tag.selectable = YES;
     tag.cornerRadius = 13;
-    tag.animatable = YES;
+    tag.animable = YES;
     tag.fontSize = 15;
     tag.padding = UIEdgeInsetsMake(5, 12, 5, 12);
     
