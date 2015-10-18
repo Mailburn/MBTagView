@@ -358,4 +358,28 @@
     [self onTag:tagButton];
 }
 
+- (void)selectAll
+{
+    for (MBTagButton *btn in self.subviews) {
+        if (btn.animable) {
+            if (self.animateBlockForEachView) {
+                self.animateBlockForEachView(btn);
+            }
+        }
+        
+        if (btn.selectable) {
+            btn.selected = YES;
+        }
+    }
+}
+
+- (void)deselectAll
+{
+    for (MBTagButton *tagButton in self.subviews) {
+        if (tagButton.selectable) {
+            tagButton.selected = NO;
+        }
+    }
+}
+
 @end

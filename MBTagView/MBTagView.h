@@ -23,6 +23,9 @@
 - (void)removeAllTags;
 - (void)selectTagAtIndex:(NSInteger)index;
 
+- (void)selectAll;
+- (void)deselectAll;
+
 @property (nonatomic, copy) void (^didClickTagAtIndex)(NSUInteger index);
 @property (nonatomic, copy) void (^animateBlockForEachView)(UIView *btn);
 
