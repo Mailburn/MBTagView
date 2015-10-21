@@ -350,7 +350,7 @@
 
 - (void)selectTagAtIndex:(NSInteger)index
 {
-    if (index > self.tags.count) {
+    if (index > self.tags.count - 1) {
         return;
     }
     
