@@ -372,7 +372,7 @@
     }
     
     if (btn.selectable) {
-        btn.selected = !btn.selected;
+        btn.selected = NO;
     }
 }
 
