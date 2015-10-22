@@ -358,6 +358,24 @@
     [self onTag:tagButton];
 }
 
+- (void)deselectTagAtIndex:(NSInteger)index
+{
+    if (index > self.tags.count - 1) {
+        return;
+    }
+    
+    MBTagButton *btn = self.subviews[index];
+    if (btn.animable) {
+        if (self.animateBlockForEachView) {
+            self.animateBlockForEachView(btn);
+        }
+    }
+    
+    if (btn.selectable) {
+        btn.selected = !btn.selected;
+    }
+}
+
 - (void)selectAll
 {
     for (MBTagButton *btn in self.subviews) {
