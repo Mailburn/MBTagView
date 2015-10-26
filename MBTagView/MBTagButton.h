@@ -12,7 +12,10 @@
 
 @property (nonatomic) BOOL selectable;
 @property (nonatomic) BOOL animable;
+@property (nonatomic, strong) UIColor *selectedbackgroundColor;
 
 + (instancetype)buttonWithTag:(MBTag *)tag;
+
+- (void)setBackgroundImages;
 
 @end

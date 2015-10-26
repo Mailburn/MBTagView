@@ -104,6 +104,8 @@
     }
     
     [super layoutSubviews];
+    
+    [self updateButtons];
 }
 
 #pragma mark - Private methods
@@ -230,6 +232,13 @@
      }];
     
     self.didSetup = YES;
+}
+
+- (void)updateButtons
+{
+    for (MBTagButton *tagButton in self.subviews) {
+        [tagButton setBackgroundImages];
+    }
 }
 
 - (NSMutableArray *)tags

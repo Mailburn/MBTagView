@@ -6,6 +6,7 @@
 #import "MBTagButton.h"
 #import "MBTag.h"
 #import "UIColor+ImageColor.h"
+#import "UIButton+ClipBackgroundImageToBounds.h"
 
 @implementation MBTagButton
 
@@ -31,10 +32,6 @@
         [btn setBackgroundImage:tag.bgImg forState:UIControlStateNormal];
     }
     
-    if (tag.selectedbackgroundColor) {
-        [btn setBackgroundImage:[UIColor imageWithColor:tag.selectedbackgroundColor] forState:UIControlStateHighlighted];
-        [btn setBackgroundImage:[UIColor imageWithColor:tag.selectedbackgroundColor] forState:UIControlStateSelected];
-    }
     
     if (tag.borderColor) {
         btn.layer.borderColor = tag.borderColor.CGColor;
@@ -46,11 +43,26 @@
     
     btn.userInteractionEnabled = tag.enable;
     btn.layer.cornerRadius = tag.cornerRadius;
-    btn.layer.masksToBounds = YES;
+//    btn.layer.masksToBounds = YES;
     btn.selectable = tag.selectable;
     btn.animable = tag.animable;
     
+    btn.layer.shadowColor = [UIColor blackColor].CGColor;
+    btn.layer.shadowOffset = CGSizeMake(0, 0.5f);
+    btn.layer.shadowOpacity = 0.3f;
+    btn.layer.shadowRadius = 0.5f;
+    
+    btn.selectedbackgroundColor = tag.selectedbackgroundColor;
+    
     return btn;
+}
+
+- (void)setBackgroundImages
+{
+    if (self.selectedbackgroundColor) {
+        [self setBackgroundImageClippedToBounds:[UIColor imageWithColor:self.selectedbackgroundColor] forState:UIControlStateHighlighted];
+        [self setBackgroundImageClippedToBounds:[UIColor imageWithColor:self.selectedbackgroundColor] forState:UIControlStateSelected];
+    }
 }
 
 @end
