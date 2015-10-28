@@ -298,6 +298,18 @@
     [self invalidateIntrinsicContentSize];
 }
 
+- (void)addTags:(NSArray *)tags
+{
+    for (MBTag *tag in tags) {
+        MBTagButton *btn = [MBTagButton buttonWithTag:tag];
+        [btn addTarget:self action:@selector(onTag:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btn];
+        [self.tags addObject:tag];
+    }
+    self.didSetup = NO;
+    [self invalidateIntrinsicContentSize];
+}
+
 - (void)insertTag:(MBTag *)tag atIndex:(NSUInteger)index
 {
     if (index + 1 > self.tags.count)
@@ -327,6 +339,20 @@
     [self.tags removeObjectAtIndex:index];
     [self.subviews[index] removeFromSuperview];
     
+    self.didSetup = NO;
+    [self invalidateIntrinsicContentSize];
+}
+
+- (void)removeTags:(NSArray *)tags
+{
+    for (MBTag *tag in tags) {
+        NSUInteger index = [self.tags indexOfObject:tag];
+        if (NSNotFound != index)
+        {
+            [self.tags removeObjectAtIndex:index];
+            [self.subviews[index] removeFromSuperview];
+        }
+    }
     self.didSetup = NO;
     [self invalidateIntrinsicContentSize];
 }

@@ -17,8 +17,10 @@
 @property (nonatomic) BOOL singleLine;
 
 - (void)addTag:(MBTag *)tag;
+- (void)addTags:(NSArray *)tags;
 - (void)insertTag:(MBTag *)tag atIndex:(NSUInteger)index;
 - (void)removeTag:(MBTag *)tag;
+- (void)removeTags:(NSArray *)tags;
 - (void)removeTagAtIndex:(NSUInteger)index;
 - (void)removeAllTags;
 - (void)selectTagAtIndex:(NSInteger)index;
